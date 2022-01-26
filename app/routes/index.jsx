@@ -1,32 +1,17 @@
+export const loader = async ({ params }) => {
+  const js = await fetch("https://timercheck.io/YOURTIMERNAME/60");
+    return {
+      date: (await js.json()).now
+    }
+};
+
+export function headers() {
+  return {
+    "cache-control": "max-age=3000, s-maxage=36000, stale-while-revalidate=360000",
+  };
+}
+
 export default function Index() {
-  return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
-  );
+  const {date} = useLoaderData();
+  return <h1>Date: {date}</h1>
 }
