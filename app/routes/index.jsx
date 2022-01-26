@@ -7,7 +7,7 @@ const ssrCache = new Cache({
   maxAge: 5000, // 1hour
 });
 ssrCache.allowStale = true;
-
+ 
 export const loader = async ({ params }) => {
     const key = "mycache";
     if (ssrCache.has(key)) {
