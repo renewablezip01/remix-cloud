@@ -7,18 +7,18 @@ export const loader = async ({ params }) => {
     },
     {
       headers: {
-        "cache-control": "max-age=3000, s-maxage=36000",
+        "cache-control": "max-age=3600, must-revalidate",
       }
     })
 };
 
 export function headers() {
   return {
-    "cache-control": "max-age=3000, s-maxage=36000",
+    "cache-control": "max-age=3600, must-revalidate",
   };
 }
 
 export default function Index() {
   const {date} = useLoaderData();
-  return <h1>Date: {date}</h1>
+  return <h1>Date: {date} |</h1>
 }
