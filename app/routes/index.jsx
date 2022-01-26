@@ -1,3 +1,5 @@
+import {json, useLoaderData } from "remix";
+
 export const loader = async ({ params }) => {
   const js = await fetch("https://timercheck.io/YOURTIMERNAME/60");
     return {
